@@ -6,7 +6,38 @@ module.exports = {
     "./app/*.{js,jsx,ts,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      padding: {
+        xSmall: 10,
+        small: 12,
+        medium: 16,
+        large: 20,
+        xLarge: 24,
+        xxLarge: 32,
+      },
+      shadows: {
+        small: {
+          shadowColor: "#000",
+          shadowOffset: {
+            width: 0,
+            height: 2,
+          },
+          shadowOpacity: 0.25,
+          shadowRadius: 3.84,
+          elevation: 2,
+        },
+        medium: {
+          shadowColor: "#000",
+          shadowOffset: {
+            width: 0,
+            height: 2,
+          },
+          shadowOpacity: 0.25,
+          shadowRadius: 5.84,
+          elevation: 5,
+        },
+      },
+    },
     colors: {
       primary: "#312651",
       secondary: "#444262",
@@ -19,39 +50,9 @@ module.exports = {
       lightWhite: "#FAFAFC",
     },
     fontFamily: {
-      regular: "DMRegular",
-      medium: "DMMedium",
-      bold: "DMBold",
-    },
-    padding: {
-      xSmall: 10,
-      small: 12,
-      medium: 16,
-      large: 20,
-      xLarge: 24,
-      xxLarge: 32,
-    },
-    shadows: {
-      small: {
-        shadowColor: "#000",
-        shadowOffset: {
-          width: 0,
-          height: 2,
-        },
-        shadowOpacity: 0.25,
-        shadowRadius: 3.84,
-        elevation: 2,
-      },
-      medium: {
-        shadowColor: "#000",
-        shadowOffset: {
-          width: 0,
-          height: 2,
-        },
-        shadowOpacity: 0.25,
-        shadowRadius: 5.84,
-        elevation: 5,
-      },
+      reg: "DMRegular",
+      med: "DMMedium",
+      dark: "DMBold",
     },
   },
   plugins: [],
