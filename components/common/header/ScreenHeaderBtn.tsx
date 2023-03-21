@@ -13,7 +13,7 @@ const ScreenHeaderBtn: React.FC<ScreenHeaderBtnProps> = ({
 }) => {
   return (
     <TouchableOpacity
-      className="rounded-xl w-10 h-10 justify-center items-center bg-white mt-2"
+      className="rounded-xl w-10 h-10 justify-center items-center bg-white"
       onPress={handlePress}
     >
       <Image
