@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   View,
   Text,
@@ -14,6 +14,9 @@ const jobTypes = ["Full Time", "Part Time", "Freelance", "Internship"];
 
 const Welcome = () => {
   const router = useRouter();
+
+  const [isActive, setIsActive] = useState("Full Time");
+
   return (
     <View>
       <View className="w-full">
@@ -27,11 +30,16 @@ const Welcome = () => {
         <View className="flex-1 h-full items-center justify-center rounded-2xl bg-white mr-5">
           <TextInput
             placeholder="What are you looking for?"
-            className="w-full h-full px-medium font-reg"
+            placeholderTextColor={"rgb(131,130,154)"}
+            className="w-full h-full px-medium font-reg text-secondary"
           />
         </View>
         <TouchableOpacity className="bg-tertiary w-12 h-full rounded-2xl justify-center items-center">
-          <Image source={icons.search} className="h-1/2 w-1/2" />
+          <Image
+            source={icons.search}
+            className="h-1/2 w-1/2"
+            style={{ tintColor: "white" }}
+          />
         </TouchableOpacity>
       </View>
 
@@ -41,9 +49,21 @@ const Welcome = () => {
           renderItem={({ item }) => (
             <TouchableOpacity
               className="rounded-xl border border-gray2 bg-white px-small py-1.5"
-              onPress={() => router.push(`/jobs/${item}`)}
+              style={{
+                borderColor: isActive === item ? "#F3F4F8" : "rgb(131,130,154)",
+                backgroundColor: isActive === item ? "#444262" : "white",
+              }}
+              onPress={() => {
+                setIsActive(item);
+                router.push(`/jobs/${item}`);
+              }}
             >
-              <Text className="font-med text-gray2 focus:text-secondary">
+              <Text
+                className="font-med text-gray2 checked:text-primary"
+                style={{
+                  color: isActive === item ? "#F3F4F8" : "rgb(131,130,154)",
+                }}
+              >
                 {item}
               </Text>
             </TouchableOpacity>
