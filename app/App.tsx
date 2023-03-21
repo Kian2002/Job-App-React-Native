@@ -14,6 +14,8 @@ import { icons, images } from "../constants";
 const App = () => {
   const router = useRouter();
 
+  const onHandlePress = () => {};
+
   return (
     <SafeAreaView className="flex-1 bg-lightWhite">
       <Stack.Screen
@@ -22,10 +24,13 @@ const App = () => {
           headerShadowVisible: false,
           headerTitle: "",
           headerLeft: () => (
-            <ScreenHeaderBtn iconUrl={icons.menu} dimension="60%" />
+            <ScreenHeaderBtn iconUrl={icons.menu} handlePress={onHandlePress} />
           ),
           headerRight: () => (
-            <ScreenHeaderBtn iconUrl={images.profile} dimension="100%" />
+            <ScreenHeaderBtn
+              iconUrl={images.profile}
+              handlePress={onHandlePress}
+            />
           ),
         }}
       />
