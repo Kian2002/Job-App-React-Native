@@ -10,8 +10,11 @@ import useFetch from "../../../hooks/useFetch";
 import PopularJobCard from "../../common/cards/popular/PopularJobCard";
 
 const Popularjobs = () => {
-  const query = { query: "react", num_pages: 1 };
+  const query = { query: "Software Developer", num_pages: 1 };
   const { isLoading, error, data } = useFetch("search", query);
+  console.log(data);
+
+  const handleCardPress = (item) => {};
 
   return (
     <View className="w-full h-full mt-10">
@@ -30,8 +33,10 @@ const Popularjobs = () => {
         ) : (
           <FlatList
             data={data}
-            renderItem={({ item }) => <PopularJobCard />}
-            keyExtractor={(item) => item.id}
+            renderItem={({ item }) => (
+              <PopularJobCard item={item} handleCardPress={handleCardPress} />
+            )}
+            keyExtractor={(item) => item.job_id}
             horizontal
             showsHorizontalScrollIndicator={false}
             contentContainerStyle={{ columnGap: 12 }}
