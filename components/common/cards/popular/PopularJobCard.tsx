@@ -1,6 +1,6 @@
 import React, { FC } from "react";
 import { View, Text, TouchableOpacity, Image } from "react-native";
-import { icons } from "../../../../constants";
+import checkImageUrl from "../../../../utils/checkImageUrl";
 
 type PopularJobCardProps = {
   item: any;
@@ -21,7 +21,9 @@ const PopularJobCard: FC<PopularJobCardProps> = ({ item, handleCardPress }) => {
       >
         <Image
           source={{
-            uri: item.employer_logo ? item.employer_logo : icons.share,
+            uri: checkImageUrl(item.employer_logo)
+              ? item.employer_logo
+              : "https://t4.ftcdn.net/jpg/05/05/61/73/360_F_505617309_NN1CW7diNmGXJfMicpY9eXHKV4sqzO5H.jpg",
           }}
           resizeMode="contain"
           style={{
@@ -42,7 +44,9 @@ const PopularJobCard: FC<PopularJobCardProps> = ({ item, handleCardPress }) => {
         </Text>
 
         <Text className="text-white font-reg text-lg" numberOfLines={1}>
-          {item.job_country}
+          {item.job_city
+            ? item.job_city + ", " + item.job_country
+            : item.job_country}
         </Text>
       </View>
     </TouchableOpacity>

@@ -10,9 +10,8 @@ import useFetch from "../../../hooks/useFetch";
 import PopularJobCard from "../../common/cards/popular/PopularJobCard";
 
 const Popularjobs = () => {
-  const query = { query: "Software Developer", num_pages: 1 };
+  const query = { query: "Software Developer in Vancouver, BC", num_pages: 1 };
   const { isLoading, error, data } = useFetch("search", query);
-  console.log(data);
 
   const handleCardPress = (item) => {};
 
@@ -28,8 +27,6 @@ const Popularjobs = () => {
       <View>
         {isLoading ? (
           <ActivityIndicator size="large" color="#0000ff" />
-        ) : error ? (
-          <Text>Something went wrong...</Text>
         ) : (
           <FlatList
             data={data}
