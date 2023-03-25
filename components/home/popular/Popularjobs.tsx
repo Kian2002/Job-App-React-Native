@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   View,
   Text,
@@ -11,12 +11,12 @@ import PopularJobCard from "../../common/cards/popular/PopularJobCard";
 
 const Popularjobs = () => {
   const query = { query: "Software Developer in Vancouver, BC", num_pages: 1 };
-  const { isLoading, error, data } = useFetch("search", query);
+  const { isLoading, error, data, refresh } = useFetch("search", query);
 
   const handleCardPress = (item) => {};
 
   return (
-    <View className="w-full h-full mt-10">
+    <View className="mt-10">
       <View className="flex-row justify-between items-center">
         <Text className="font-med text-lg text-secondary">Popular Jobs</Text>
         <TouchableOpacity>
