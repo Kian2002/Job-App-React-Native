@@ -1,5 +1,5 @@
 import { Stack, useRouter, useSearchParams } from "expo-router";
-import React from "react";
+import React, { useState } from "react";
 import {
   Text,
   View,
@@ -28,13 +28,17 @@ const JobDetails = () => {
     job_id: params.id,
   });
 
+  const [refreshing, setRefreshing] = useState(false);
+
+  const onRefresh = () => {};
+
   return (
-    <SafeAreaView className="flex-1 bg-lightWhite">
+    <SafeAreaView style={{ flex: 1, backgroundColor: "#FAFAFC" }}>
       <Stack.Screen
         options={{
           headerTitle: "",
           headerStyle: { backgroundColor: "#FAFAFC" },
-          headerShadowVisible: false,
+          headerShadowVisible: true,
           headerBackVisible: false,
           headerLeft: () => (
             <ScreenHeaderBtn
@@ -50,6 +54,35 @@ const JobDetails = () => {
           ),
         }}
       />
+
+      <ScrollView
+        showsVerticalScrollIndicator={false}
+        refreshControl={
+          <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+        }
+      >
+        {isLoading ? (
+          <ActivityIndicator
+            size="large"
+            color="#0000ff"
+            style={{ marginTop: 10 }}
+          />
+        ) : error ? (
+          <Text>Something went wrong...</Text>
+        ) : data.length === 0 ? (
+          <Text>No data found</Text>
+        ) : (
+          <View>
+            <Company
+              companyLogo={data[0].employer_logo}
+              jobTitle={data[0].job_title}
+              companyName={data[0].employer_name}
+              location={data[0].job_country}
+            />
+            <JobTabs />
+          </View>
+        )}
+      </ScrollView>
     </SafeAreaView>
   );
 };
