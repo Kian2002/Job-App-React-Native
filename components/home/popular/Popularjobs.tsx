@@ -1,3 +1,4 @@
+import { useRouter } from "expo-router";
 import React, { useEffect } from "react";
 import {
   View,
@@ -13,7 +14,11 @@ const Popularjobs = () => {
   const query = { query: "Software Developer in Vancouver, BC", num_pages: 1 };
   const { isLoading, error, data, refresh } = useFetch("search", query);
 
-  const handleCardPress = (item) => {};
+  const router = useRouter();
+
+  const handleCardPress = (item) => {
+    router.push(`/job-details/${item.job_id}`);
+  };
 
   return (
     <View className="mt-10">
