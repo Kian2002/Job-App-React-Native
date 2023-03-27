@@ -31,7 +31,7 @@ const useFetch = (endpoint, query) => {
 
     useEffect(() => {
         // This is a hack I thought of to get around the 1 second delay on the free plan
-        if (query.query.includes("Vancouver")) {
+        if (query.query?.includes("Vancouver")) {
             setTimeout(() => {
                 fetchData();
             }, 5000);
