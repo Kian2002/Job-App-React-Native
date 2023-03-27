@@ -1,7 +1,7 @@
 import React, { useState, FC } from "react";
 import { View, Text, TouchableOpacity, FlatList } from "react-native";
-import About from "../about/About";
 
+import About from "../about/About";
 import Specifics from "../specifics/Specifics";
 
 type TabsProps = {
@@ -44,7 +44,9 @@ const Tabs: FC<TabsProps> = ({ jobData }) => {
       </View>
 
       <View className="justify-center items-center">
-        {activeTab === "About" && <About />}
+        {activeTab === "About" && (
+          <About jobDescription={jobData[0].job_description ?? "[N/A]"} />
+        )}
         {activeTab === "Qualifications" && (
           <Specifics
             title="Qualifications"
