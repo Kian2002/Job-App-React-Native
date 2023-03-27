@@ -1,8 +1,17 @@
-import React, { useState } from "react";
+import React, { useState, FC } from "react";
 import { View, Text, TouchableOpacity, FlatList } from "react-native";
+import About from "../about/About";
 
-const Tabs = () => {
+import Specifics from "../specifics/Specifics";
+
+type TabsProps = {
+  jobData: any;
+};
+
+const Tabs: FC<TabsProps> = ({ jobData }) => {
   const tabs = ["About", "Qualifications", "Responsibilities"];
+
+  console.log(jobData[0]);
 
   const [activeTab, setActiveTab] = useState("About");
 
@@ -34,9 +43,21 @@ const Tabs = () => {
         />
       </View>
 
-      {activeTab === "About" && <Text>About</Text>}
-      {activeTab === "Qualifications" && <Text>Qualifications</Text>}
-      {activeTab === "Responsibilities" && <Text>Responsibilities</Text>}
+      <View className="justify-center items-center">
+        {activeTab === "About" && <About />}
+        {activeTab === "Qualifications" && (
+          <Specifics
+            title="Qualifications"
+            tabData={jobData[0].job_highlights?.Qualifications ?? ["N/A"]}
+          />
+        )}
+        {activeTab === "Responsibilities" && (
+          <Specifics
+            title="Responsibilities"
+            tabData={jobData[0].job_highlights?.Responsibilities ?? ["N/A"]}
+          />
+        )}
+      </View>
     </View>
   );
 };
