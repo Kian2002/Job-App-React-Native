@@ -16,7 +16,7 @@ const Tabs: FC<TabsProps> = ({ jobData }) => {
   const [activeTab, setActiveTab] = useState("About");
 
   return (
-    <View className="mt-4">
+    <View className="mt-4 p-medium pb-24">
       <View className="w-full justify-center items-center">
         <FlatList
           data={tabs}
@@ -43,7 +43,7 @@ const Tabs: FC<TabsProps> = ({ jobData }) => {
         />
       </View>
 
-      <View className="justify-center items-center">
+      <View>
         {activeTab === "About" && (
           <About jobDescription={jobData[0].job_description ?? "[N/A]"} />
         )}
