@@ -9,14 +9,7 @@ import {
   RefreshControl,
 } from "react-native";
 
-import {
-  Company,
-  JobAbout,
-  JobFooter,
-  JobTabs,
-  ScreenHeaderBtn,
-  Specifics,
-} from "../../components";
+import { Company, JobFooter, JobTabs, ScreenHeaderBtn } from "../../components";
 import { icons } from "../../constants";
 import useFetch from "../../hooks/useFetch";
 
