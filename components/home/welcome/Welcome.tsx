@@ -16,6 +16,7 @@ const Welcome = () => {
   const router = useRouter();
 
   const [isActive, setIsActive] = useState("Full Time");
+  const [search, setSearch] = useState("");
 
   return (
     <View>
@@ -32,9 +33,16 @@ const Welcome = () => {
             placeholder="What are you looking for?"
             placeholderTextColor={"rgb(131,130,154)"}
             className="w-full h-full px-medium font-reg text-secondary"
+            value={search}
+            onChangeText={(text) => setSearch(text)}
           />
         </View>
-        <TouchableOpacity className="bg-tertiary w-12 h-full rounded-2xl justify-center items-center">
+        <TouchableOpacity
+          className="bg-tertiary w-12 h-full rounded-2xl justify-center items-center"
+          onPress={() => {
+            if (search) router.push(`/search/${search}`);
+          }}
+        >
           <Image
             source={icons.search}
             className="h-1/2 w-1/2"
