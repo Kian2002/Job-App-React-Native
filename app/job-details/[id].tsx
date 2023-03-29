@@ -23,7 +23,11 @@ const JobDetails = () => {
 
   const [refreshing, setRefreshing] = useState(false);
 
-  const onRefresh = () => {};
+  const onRefresh = () => {
+    setRefreshing(true);
+    refresh();
+    setRefreshing(false);
+  };
 
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: "#FAFAFC" }}>
