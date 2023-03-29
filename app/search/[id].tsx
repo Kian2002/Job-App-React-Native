@@ -96,21 +96,31 @@ const SearchPage = () => {
             ))
           )}
 
-          <View className="flex-row justify-center items-center mt-10">
+          <View className="flex-row justify-center items-center mt-2 mb-10 gap-2">
             <TouchableOpacity
-              className="flex-row justify-center items-center bg-primary rounded-full py-2 px-4"
+              className="bg-tertiary w-8 h-8 rounded-lg"
               onPress={() => setPage(page - 1)}
             >
-              <Image source={icons.chevronLeft} />
+              <Image
+                source={icons.chevronLeft}
+                className="w-8 h-8"
+                style={{ tintColor: "#FFFFFF" }}
+              />
             </TouchableOpacity>
 
-            <Text>{page}</Text>
+            <Text className="bg-white w-8 h-8 rounded-lg text-center text-lg font-med text-tertiary">
+              {page}
+            </Text>
 
             <TouchableOpacity
-              className="flex-row justify-center items-center bg-primary rounded-full py-2 px-4"
+              className="bg-tertiary w-8 h-8 rounded-lg"
               onPress={() => setPage(page + 1)}
             >
-              <Image source={icons.chevronRight} />
+              <Image
+                source={icons.chevronRight}
+                className="w-8 h-8"
+                style={{ tintColor: "#FFFFFF" }}
+              />
             </TouchableOpacity>
           </View>
         </ScrollView>
