@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { FC, useState } from "react";
 import {
   View,
   Text,
@@ -12,7 +12,11 @@ import { icons } from "../../../constants";
 
 const jobTypes = ["Full Time", "Part Time", "Freelance", "Internship"];
 
-const Welcome = () => {
+type WelcomeProps = {
+  handleJobType: (type: string) => void;
+};
+
+const Welcome: FC<WelcomeProps> = ({ handleJobType }) => {
   const router = useRouter();
 
   const [isActive, setIsActive] = useState("Full Time");
@@ -63,7 +67,7 @@ const Welcome = () => {
               }}
               onPress={() => {
                 setIsActive(item);
-                router.push(`/jobs/${item}`);
+                handleJobType(item);
               }}
             >
               <Text

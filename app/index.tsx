@@ -14,7 +14,13 @@ import { icons, images } from "../constants";
 const App = () => {
   const router = useRouter();
 
+  const [jobType, setJobType] = useState("Full Time");
+
   const onHandlePress = () => {};
+
+  const onHandleJobType = (type) => {
+    setJobType(type);
+  };
 
   return (
     <SafeAreaView className="flex-1 bg-lightWhite">
@@ -37,8 +43,8 @@ const App = () => {
 
       <ScrollView showsHorizontalScrollIndicator={false}>
         <View className="flex-1 p-medium">
-          <Welcome />
-          <Popularjobs />
+          <Welcome handleJobType={onHandleJobType} />
+          <Popularjobs jobType={jobType} />
           <Nearbyjobs />
         </View>
       </ScrollView>

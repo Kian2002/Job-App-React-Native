@@ -1,5 +1,5 @@
 import { useRouter } from "expo-router";
-import React, { useEffect } from "react";
+import React, { FC, useEffect, useState } from "react";
 import {
   View,
   Text,
@@ -10,9 +10,27 @@ import {
 import useFetch from "../../../hooks/useFetch";
 import PopularJobCard from "../../common/cards/popular/PopularJobCard";
 
-const Popularjobs = () => {
-  const query = { query: "Software Engineer", num_pages: 1 };
+type PopularjobsProps = {
+  jobType: string;
+};
+
+const Popularjobs: FC<PopularjobsProps> = ({ jobType }) => {
+  const query = {
+    query: "Software Engineer",
+    num_pages: 1,
+    employement_type: jobType,
+  };
   const { isLoading, error, data, refresh } = useFetch("search", query);
+
+  const [isFirstLoad, setIsFirstLoad] = useState(true);
+
+  useEffect(() => {
+    if (isFirstLoad) {
+      setIsFirstLoad(false);
+    } else {
+      refresh();
+    }
+  }, [jobType]);
 
   const router = useRouter();
 
